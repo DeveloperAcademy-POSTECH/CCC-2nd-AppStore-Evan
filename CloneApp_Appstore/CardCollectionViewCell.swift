@@ -16,6 +16,20 @@ enum CardType {
 
 class CardCollectionViewCell: UICollectionViewCell {
     
+    lazy var shadowView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
+    lazy var containerView: UIView = {
+        let view = UIView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .white
+        return view
+    }()
+    
     lazy var titleLabel: UILabel = {
         let titleLabel = UILabel()
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -66,6 +80,42 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     func configureView() {
+        
+        shadowView.layer.cornerRadius = 20
+        shadowView.layer.shadowColor = UIColor.black.cgColor
+        shadowView.layer.shadowOpacity = 0.2
+        shadowView.layer.shadowRadius = 10
+        shadowView.layer.shadowOffset = CGSize(width: -1, height: 2)
+        
+        backgroundColor = .clear
+        addSubview(shadowView)
+        addSubview(containerView)
+        addSubview(background)
+        
+        containerView.layer.cornerRadius = 20
+        containerView.backgroundColor = .red
+        
+        NSLayoutConstraint.activate([
+            containerView.leftAnchor.constraint(equalTo: contentView.leftAnchor),
+            containerView.rightAnchor.constraint(equalTo: contentView.rightAnchor),
+            containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            background.leftAnchor.constraint(equalTo: containerView.leftAnchor),
+            background.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            background.topAnchor.constraint(equalTo: containerView.topAnchor),
+            background.bottomAnchor.constraint(equalTo: containerView.bottomAnchor)
+        ])
+        
+        NSLayoutConstraint.activate([
+            shadowView.topAnchor.constraint(equalTo: containerView.topAnchor),
+            shadowView.rightAnchor.constraint(equalTo: containerView.rightAnchor),
+            shadowView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor),
+            shadowView.leftAnchor.constraint(equalTo: containerView.leftAnchor)
+        ])
+        
         labels.addArrangedSubview(secionLabel)
         labels.addArrangedSubview(titleLabel)
         addSubview(labels)
@@ -105,4 +155,6 @@ class CardCollectionViewCell: UICollectionViewCell {
         self.secionLabel.text = section
         self.titleLabel.text = title
     }
+    
+    
 }

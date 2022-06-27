@@ -35,8 +35,8 @@ extension AppInfoData {
 
 extension CardType {
     static let samples: [CardType] = [
-        .article(section: "같이 즐겨요", title: "웹툰이 살아났다! - 4편", label: "웹툰과 드라마로 만나는 내일", background: UIImage(), body: UIView()),
-        .article(section: "컬렉션", title: "쉽게 그리고\n 정교하게 표현하고", label: "앱으로 멋진 그림을 그려 보세요", background: UIImage(), body: UIView()),
+        .article(section: "같이 즐겨요", title: "웹툰이 살아났다! - 4편", label: "웹툰과 드라마로 만나는 내일", background: UIImage(named: "testBackground")!, body: UIView()),
+        .article(section: "컬렉션", title: "쉽게 그리고\n 정교하게 표현하고", label: "앱으로 멋진 그림을 그려 보세요", background: UIImage(named: "testBackground")!, body: UIView()),
         .spotlight(section: "오늘 뭐 보지?", title: "엽기적인 그녀", app: AppInfoData.samples[0], background: UIImage(), body: UIView())
     ]
 }

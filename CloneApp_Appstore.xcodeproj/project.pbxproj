@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		21558A58286A1361004EF819 /* CardCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21558A57286A1361004EF819 /* CardCollectionViewCell.swift */; };
+		21558A5A286A26C1004EF819 /* CardTransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21558A59286A26C1004EF819 /* CardTransitionManager.swift */; };
 		21BEB09F2863043400270E65 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BEB09E2863043400270E65 /* AppDelegate.swift */; };
 		21BEB0A12863043400270E65 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BEB0A02863043400270E65 /* SceneDelegate.swift */; };
 		21BEB0A32863043400270E65 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21BEB0A22863043400270E65 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		21558A57286A1361004EF819 /* CardCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCollectionViewCell.swift; sourceTree = "<group>"; };
+		21558A59286A26C1004EF819 /* CardTransitionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransitionManager.swift; sourceTree = "<group>"; };
 		21BEB09B2863043400270E65 /* CloneApp_Appstore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CloneApp_Appstore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		21BEB09E2863043400270E65 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		21BEB0A02863043400270E65 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -72,6 +74,7 @@
 				21E852B2286A09AD00D33D2D /* AppRowCollectionViewCell.swift */,
 				21558A57286A1361004EF819 /* CardCollectionViewCell.swift */,
 				21E852B02869CB7800D33D2D /* AppInfoView.swift */,
+				21558A59286A26C1004EF819 /* CardTransitionManager.swift */,
 				21BEB0A72863043400270E65 /* Assets.xcassets */,
 				21BEB0A92863043400270E65 /* LaunchScreen.storyboard */,
 				21BEB0AC2863043400270E65 /* Info.plist */,
@@ -155,6 +158,7 @@
 				21BEB0A32863043400270E65 /* ViewController.swift in Sources */,
 				21E852B12869CB7800D33D2D /* AppInfoView.swift in Sources */,
 				21BEB09F2863043400270E65 /* AppDelegate.swift in Sources */,
+				21558A5A286A26C1004EF819 /* CardTransitionManager.swift in Sources */,
 				21BEB0A12863043400270E65 /* SceneDelegate.swift in Sources */,
 				21558A58286A1361004EF819 /* CardCollectionViewCell.swift in Sources */,
 			);
