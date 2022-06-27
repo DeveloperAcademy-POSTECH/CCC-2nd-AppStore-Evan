@@ -61,18 +61,19 @@ class TodayViewController: UIViewController, UIScrollViewDelegate {
     
     lazy var cardCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
         layout.minimumLineSpacing = 12
+        
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
         let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
         view.translatesAutoresizingMaskIntoConstraints = false
+        view.isScrollEnabled = false
         view.delegate = self
         view.dataSource = self
-        view.register(AppRowCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        view.register(CardCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         return view
     }()
     
-    let samples = AppInfoData.samples
+    let samples = CardType.samples
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,8 +89,8 @@ extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSou
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AppRowCollectionViewCell
-        cell.setCell(data: samples[indexPath.row])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! CardCollectionViewCell
+        cell.setCell(cardType: samples[indexPath.row])
         return cell
     }
         

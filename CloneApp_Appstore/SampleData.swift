@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class AppInfoData {
     var name: String
@@ -29,5 +30,13 @@ extension AppInfoData {
         AppInfoData(name: "당근마켓", subLabel: "당신 근처의 동네 커뮤니티", iconName: ""),
         AppInfoData(name: "카카오톡 kaKaoTalk", subLabel: "모든 연결의 시작, 카카오톡", iconName: ""),
         AppInfoData(name: "야놀자", subLabel: "여행의 모든 것, 한 번에 쉽게", iconName: ""),
+    ]
+}
+
+extension CardType {
+    static let samples: [CardType] = [
+        .article(section: "같이 즐겨요", title: "웹툰이 살아났다! - 4편", label: "웹툰과 드라마로 만나는 내일", background: UIImage(), body: UIView()),
+        .article(section: "컬렉션", title: "쉽게 그리고\n 정교하게 표현하고", label: "앱으로 멋진 그림을 그려 보세요", background: UIImage(), body: UIView()),
+        .spotlight(section: "오늘 뭐 보지?", title: "엽기적인 그녀", app: AppInfoData.samples[0], background: UIImage(), body: UIView())
     ]
 }

@@ -28,6 +28,14 @@ class CardCollectionViewCell: UICollectionViewCell {
         return secionLabel
     }()
     
+    lazy var labels: UIStackView = {
+        let view = UIStackView()
+        view.axis = .vertical
+        view.alignment = .leading
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }()
+    
     lazy var background: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -42,11 +50,29 @@ class CardCollectionViewCell: UICollectionViewCell {
         configureView()
     }
     
+    override init(frame: CGRect) {
+        self.cardType = .article(section: "asdf", title: "", label: "", background: UIImage(), body: UIView())
+        super.init(frame: frame)
+        configureView()
+    }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configureView() {
+    func setCell(cardType: CardType) {
+        self.cardType = cardType
+        configureView()
+    }
+    
+    func configureView() {
+        labels.addArrangedSubview(secionLabel)
+        labels.addArrangedSubview(titleLabel)
+        addSubview(labels)
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: labels.topAnchor, constant: 2.0),
+            contentView.leftAnchor.constraint(equalTo: labels.leftAnchor, constant: 2.0),
+        ])
         
         switch cardType {
         case .article(let section, let title, let label, let background, let body):
@@ -61,18 +87,22 @@ class CardCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureArticle(section: String, title: String, label: String, background: UIImage, body: UIView) {
-        
+        self.secionLabel.text = section
+        self.titleLabel.text = title
     }
     
     private func configureChoice(section: String, title: String, list: [AppInfoData]) {
-        
+        self.secionLabel.text = section
+        self.titleLabel.text = title
     }
     
     private func configureSpotlight(section: String, title: String, app: AppInfoData, background: UIImage, body: UIView) {
-        
+        self.secionLabel.text = section
+        self.titleLabel.text = title
     }
     
     private func configureCollection(section: String, title: String, list: [AppInfoData]) {
-        
+        self.secionLabel.text = section
+        self.titleLabel.text = title
     }
 }
