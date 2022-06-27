@@ -58,12 +58,42 @@ class TodayViewController: UIViewController, UIScrollViewDelegate {
         image.clipsToBounds = true
         return image
     }()
+    
+    lazy var cardsCollectionView: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.register(AppInfoCollectionViewCell.self, forCellWithReuseIdentifier: "AppInfo")
+        return collectionView
+        
+//        let tableView = UITableView(frame: .zero)
+//        tableView.translatesAutoresizingMaskIntoConstraints = false
+//        tableView.delegate = self
+//        tableView.dataSource = self
+//        tableView.separatorStyle = .none
+//        tableView.registerCell(GenericTableViewCell<CardView>.self)
+//        return tableView
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         view.backgroundColor = .systemBackground
-        
+        configureView()
+    }
+    
+
+}
+
+extension TodayViewController {
+    
+    private func configureView() {
+        configureScrollView()
+        configureTopView()
+        configureCardsView()
+    }
+    
+    private func configureScrollView() {
         view.addSubview(scrollView)
         NSLayoutConstraint.activate([
             scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -71,7 +101,9 @@ class TodayViewController: UIViewController, UIScrollViewDelegate {
             scrollView.rightAnchor.constraint(equalTo: view.rightAnchor),
             scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor)
         ])
-        
+    }
+    
+    private func configureTopView() {
         scrollView.addSubview(topView)
         NSLayoutConstraint.activate([
             topView.topAnchor.constraint(equalTo: scrollView.topAnchor),
@@ -103,5 +135,26 @@ class TodayViewController: UIViewController, UIScrollViewDelegate {
         ])
     }
     
+    private func configureCardsView() {
+        scrollView.addSubview(cardsCollectionView)
+        NSLayoutConstraint.activate([
+            cardsCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            cardsCollectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            cardsCollectionView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+//            cardsCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(450 * cardsViewData.count)),
+            cardsCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+        ])
+    }
+}
 
+extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        <#code#>
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        <#code#>
+    }
+    
 }

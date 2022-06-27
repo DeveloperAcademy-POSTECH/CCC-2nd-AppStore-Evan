@@ -13,6 +13,7 @@
 		21BEB0A82863043400270E65 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 21BEB0A72863043400270E65 /* Assets.xcassets */; };
 		21BEB0AB2863043400270E65 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 21BEB0A92863043400270E65 /* LaunchScreen.storyboard */; };
 		21C1ECE92869552300D5442B /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1ECE82869552300D5442B /* TodayViewController.swift */; };
+		21C1ECEB28695B3400D5442B /* AppInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 21C1ECEA28695B3400D5442B /* AppInfoCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		21BEB0AA2863043400270E65 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		21BEB0AC2863043400270E65 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		21C1ECE82869552300D5442B /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
+		21C1ECEA28695B3400D5442B /* AppInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 				21BEB0A02863043400270E65 /* SceneDelegate.swift */,
 				21BEB0A22863043400270E65 /* ViewController.swift */,
 				21C1ECE82869552300D5442B /* TodayViewController.swift */,
+				21C1ECEA28695B3400D5442B /* AppInfoCollectionViewCell.swift */,
 				21BEB0A72863043400270E65 /* Assets.xcassets */,
 				21BEB0A92863043400270E65 /* LaunchScreen.storyboard */,
 				21BEB0AC2863043400270E65 /* Info.plist */,
@@ -141,6 +144,7 @@
 				21BEB0A32863043400270E65 /* ViewController.swift in Sources */,
 				21BEB09F2863043400270E65 /* AppDelegate.swift in Sources */,
 				21BEB0A12863043400270E65 /* SceneDelegate.swift in Sources */,
+				21C1ECEB28695B3400D5442B /* AppInfoCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
