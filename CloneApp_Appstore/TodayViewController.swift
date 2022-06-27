@@ -59,30 +59,44 @@ class TodayViewController: UIViewController, UIScrollViewDelegate {
         return image
     }()
     
-    lazy var cardsCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(AppInfoCollectionViewCell.self, forCellWithReuseIdentifier: "AppInfo")
-        return collectionView
-        
-//        let tableView = UITableView(frame: .zero)
-//        tableView.translatesAutoresizingMaskIntoConstraints = false
-//        tableView.delegate = self
-//        tableView.dataSource = self
-//        tableView.separatorStyle = .none
-//        tableView.registerCell(GenericTableViewCell<CardView>.self)
-//        return tableView
+    lazy var cardCollectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .vertical
+        layout.minimumLineSpacing = 12
+        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 0)
+        let view = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.delegate = self
+        view.dataSource = self
+        view.register(AppRowCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        return view
     }()
-
+    
+    let samples = AppInfoData.samples
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         configureView()
     }
-    
+}
 
+extension TodayViewController: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        3
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! AppRowCollectionViewCell
+        cell.setCell(data: samples[indexPath.row])
+        return cell
+    }
+        
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = CGSize(width: view.frame.size.width, height: 450)
+        return size
+    }
 }
 
 extension TodayViewController {
@@ -90,7 +104,7 @@ extension TodayViewController {
     private func configureView() {
         configureScrollView()
         configureTopView()
-        configureCardsView()
+        configureCardCollectionView()
     }
     
     private func configureScrollView() {
@@ -135,26 +149,14 @@ extension TodayViewController {
         ])
     }
     
-    private func configureCardsView() {
-        scrollView.addSubview(cardsCollectionView)
+    func configureCardCollectionView() {
+        scrollView.addSubview(cardCollectionView)
         NSLayoutConstraint.activate([
-            cardsCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor),
-            cardsCollectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
-            cardsCollectionView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
-//            cardsCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(450 * cardsViewData.count)),
-            cardsCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
+            cardCollectionView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+            cardCollectionView.leftAnchor.constraint(equalTo: scrollView.leftAnchor),
+            cardCollectionView.widthAnchor.constraint(equalToConstant: view.frame.size.width),
+            cardCollectionView.heightAnchor.constraint(equalToConstant: CGFloat(450 * samples.count)),
+            cardCollectionView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor)
         ])
     }
-}
-
-extension TodayViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-    
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        <#code#>
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        <#code#>
-    }
-    
 }
